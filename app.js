@@ -7,8 +7,11 @@ const app = express()
 
 //? View Engine Setup
 // app.use(expressLayout);
-app.set('views', path.join(__dirname, '/resources/views'));
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs')
+
+//? Static path
+app.use(express.static('public'));
 
 app.get('/', (req, res)=> {
     res.render("index")
