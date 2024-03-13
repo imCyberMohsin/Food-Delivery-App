@@ -1,22 +1,71 @@
 <!--! Navbar  -->
-<nav class="container mx-auto flex items-center justify-between py-4 border-b-2 border-white">
-    <!-- Left -->
-    <div class="logo cursor-pointer flex justify-center items-center gap-3">
-        <a href="/" class="img rounded-full w-14 overflow-hidden">
-            <img class="hover:bg-green-500 transition-all duration-200" src="../../img/logo-black.png" alt="">
+<nav class="container mx-auto">
+    <div class=" flex flex-wrap items-center justify-between mx-auto p-4">
+        <!-- Left -->
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <div class="w-14 hover:bg-green-500 transition-all duration-200 rounded-full overflow-hidden">
+                <img src="../../img/logo-black.png" alt="Logo"/>
+            </div>
+            <span class="self-center text-2xl font-semibold whitespace-nowra">Food Time</span>
         </a>
-        <h3 class="font-semibold text-xl">Food Time</h3>
-    </div>
 
-    <!-- Right -->
-    <div class="nav-items flex gap-7 justify-center items-center">
-        <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Menu</a>
-        <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Offers</a>
-        <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Register</a>
-        <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Login</a>
+        <!-- Hidden Button For Mobile -->
+        <button id="mobile-menu-toggle" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:bg-green-500 transition-all duration-200 focus:ring-2 ring-black"
+            aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <i class="fa-solid fa-bars text-3xl"></i>
+        </button>
 
-        <div class="cart-icon px-8 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
-            <i class="ri-shopping-cart-2-line text-4xl"></i>
+        <!-- Right -->
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul
+                class="flex flex-col justify-center items-center p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent">
+                <li class="py-3">
+                    <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Menu</a>
+                </li>
+                <li class="py-3">
+                    <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Offers</a>
+                </li>
+                <li class="py-3">
+                    <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150"
+                        href="">Register</a>
+                </li>
+                <li class="py-3">
+                    <a class="text-xl font-semibold hover:text-green-500 transition-all duration-150" href="">Login</a>
+                </li>
+                <!-- Cart Button -->
+                <li class="my-3 cart-icon px-8 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
+                    <i class="ri-shopping-cart-2-line text-4xl"></i>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
+
+
+<script>
+    // JavaScript to toggle the mobile menu
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function (event) {
+        let navbar = document.getElementById('navbar-default');
+        navbar.classList.toggle('hidden');
+        event.stopPropagation(); // Prevents the click event from reaching the document
+    });
+
+    // Close the mobile menu when clicking outside the navbar
+    document.addEventListener('click', function (event) {
+        let navbar = document.getElementById('navbar-default');
+        if (navbar && !navbar.contains(event.target)) {
+            navbar.classList.add('hidden');
+        }
+    });
+
+    // Unhide the navbar when a navigation item is clicked
+    let navLinks = document.querySelectorAll('#navbar-default a');
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+            let navbar = document.getElementById('navbar-default');
+            navbar.classList.add('hidden');
+        });
+    });
+</script>
