@@ -13,9 +13,11 @@ app.set('view engine', 'ejs')
 //? Static path
 app.use(express.static('public'));
 
-app.get('/', (req, res)=> {
-    res.render("index")
-})
+//? Getting index router
+const indexRouter = require('./routes/index')
+// Using Routers
+app.use('/', indexRouter);
+app.use('/cart', indexRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{
