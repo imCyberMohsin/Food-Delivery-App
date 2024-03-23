@@ -1,17 +1,19 @@
+//! Food Delivery Main Server 
 require('dotenv').config()
 const express = require('express')
 const ejs = require('ejs')
 const path = require('path')
-// const expressLayout = require('express-ejs-layouts')
 const app = express()
+// const expressLayout = require('express-ejs-layouts')
+const flash = require('connect-flash')
 
-//? View Engine Setup
+//? Middlewares
 // app.use(expressLayout);
+app.use(express.urlencoded({ extended: true })); // Middleware to parse form data
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs')
-
-//? Static path
 app.use(express.static('public'));
+app.use(flash());
 
 //? Getting index router
 const indexRouter = require('./routes/index')

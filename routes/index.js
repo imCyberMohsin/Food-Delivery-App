@@ -6,9 +6,19 @@ router.get('/', (req, res) => {
     res.render('homePage');
 })
 
-//? Cart
+//? Cart Page
 router.get('/cart', (req, res)=> {
     res.render('cartPage');
 })
+
+//? Login Page
+router.get('/login', (req, res) => {
+    res.render('loginPage');
+}) 
+
+//? Signup Page
+router.get('/signup', (req, res) => {
+    res.render('signupPage');
+}) 
 
 module.exports = router;
