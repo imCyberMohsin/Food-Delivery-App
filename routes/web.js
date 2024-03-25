@@ -1,27 +1,24 @@
 //! All Routes Function 
-// GET routes are here
-// POST requests of routes are inside /controllers
+// All the routes are here
+// Logic of routes are inside /controllers
+
+//* Importing controllers 
+const homeController = require('../app/http/controllers/homeController')
+const authController = require('../app/http/controllers/authController')
+const cartController = require('../app/http/controllers/customers/cartController')
 
 const allRoutes = (app) => {
-    //? Landing Page / Home
-    app.get('/', (req, res) => {
-        res.render('homePage');
-    })
+    //? Home Page
+    app.get('/', homeController().home); // using controller as a callback function
 
     //? Cart Page
-    app.get('/cart', (req, res) => {
-        res.render('cartPage');
-    })
+    app.get('/cart', cartController().index)
 
     //? Login Page
-    app.get('/login', (req, res) => {
-        res.render('loginPage');
-    })
+    app.get('/login', authController().login)
 
     //? Signup Page
-    app.get('/signup', (req, res) => {
-        res.render('signupPage');
-    })
+    app.get('/signup', authController().signup)
 }
 
 module.exports = allRoutes;
