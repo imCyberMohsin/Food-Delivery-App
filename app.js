@@ -17,8 +17,8 @@ app.use(flash());
 
 //? Getting all web routes
 const webRouter = require('./routes/web')
-// Using Routers
-app.use('/', webRouter);
+// calling web.js to execute the function inside and passing app instance
+webRouter(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, ()=>{

@@ -1,25 +1,29 @@
-//! All Routes 
-const express = require('express')
-const router = express.Router()
+//! All Routes Function 
+// GET routes are here
+// POST requests of routes are inside /controllers
 
-//? Landing Page / Home
-router.get('/', (req, res) => {
-    res.render('homePage');
-})
+const allRoutes = (app) => {
+    //? Landing Page / Home
+    app.get('/', (req, res) => {
+        res.render('homePage');
+    })
 
-//? Cart Page
-router.get('/cart', (req, res)=> {
-    res.render('cartPage');
-})
+    //? Cart Page
+    app.get('/cart', (req, res) => {
+        res.render('cartPage');
+    })
 
-//? Login Page
-router.get('/login', (req, res) => {
-    res.render('loginPage');
-}) 
+    //? Login Page
+    app.get('/login', (req, res) => {
+        res.render('loginPage');
+    })
 
-//? Signup Page
-router.get('/signup', (req, res) => {
-    res.render('signupPage');
-}) 
+    //? Signup Page
+    app.get('/signup', (req, res) => {
+        res.render('signupPage');
+    })
+}
 
-module.exports = router;
+module.exports = allRoutes;
+// Exporting allRoutes function
+// Import web.js in app.js and call the function to use 
