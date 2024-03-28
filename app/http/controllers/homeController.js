@@ -1,9 +1,12 @@
 //! Home Controller
+const menuModel = require('../../models/menu');
 
 function homeController() {
     return {
-        home(req, res) {
-            res.render('homePage');
+        async home(req, res) {
+            const foodItems = await menuModel.find();
+            res.render('homePage', { foodItems: foodItems });
+            // console.log(foodItems);
         }
     }
 }

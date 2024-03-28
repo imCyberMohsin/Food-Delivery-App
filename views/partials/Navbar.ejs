@@ -34,7 +34,8 @@
                     <a href="/login" class="text-xl font-semibold hover:text-green-500 transition-all duration-150">Login</a>
                 </li>
                 <!-- Cart Button -->
-                <a href="/cart" class="my-3 cart-icon px-8 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
+                <a href="/cart" class="flex items-center gap-3 my-3 cart-icon px-8 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
+                    <span id="cartCounter" class="text-2xl font-semibold"><%= session.cart ? session.cart.totalQty : "" %></span>
                     <i class="ri-shopping-cart-2-line text-4xl"></i>
                 </a>
             </ul>
