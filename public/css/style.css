@@ -1,7 +1,31 @@
-html{
+/*? CSS For Food Delivery Website  */
+
+/* Add to cart notification CSS (Import not working) */
+/* 
+@import '../../noty/lib/noty.css'; 
+@import '../../noty/lib/themes/mint.css'; 
+*/
+
+/* Added Smooth Scrolling */
+html {
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar{
+/* Removed Scrollbar */
+::-webkit-scrollbar {
     display: none;
+}
+
+/* Noty Theme (Added To Cart) */
+.noty_theme__mint.noty_type__success {
+    background-color: #65c765 !important;
+    border-bottom: 1px solid #65c765 !important;
+    /* color: #fff!important; */
+    border-radius: 30px !important;
+    text-align: center;
+}
+
+.noty_theme__mint.noty_type__error {
+    border-radius: 30px !important;
+    text-align: center;
 }

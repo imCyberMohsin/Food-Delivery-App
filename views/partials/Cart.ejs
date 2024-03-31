@@ -1,96 +1,72 @@
 <!--! Cart -->
 <section class="cart bg-gray-200 py-6">
-    <!--? Empty cart -->
-    <div class="empty-cart py-5 h-screen">
-        <div class="container mx-auto text-center flex flex-col items-center justify-center gap-5">
-            <h1 class="font-bold text-5xl">Your Cart is Empty !</h1>
-            <p class="font-medium italic text-2xl text-gray-800">Please order something from the Home Page.</p>
-            
-            <img class="sm:w-1/2" src="../img/empty-cart.png" alt="">
-    
-            <a href="/" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Back To Home</a>
-        </div>
-    </div>
+    <% if (session.cart) { %>
+        <!--? Added Items in cart -->
+        <div class="orders container mx-auto w-1/2">
+            <!--* Heading -->
+            <div class="flex items-center justify-center gap-3 border-b-2 border-gray-500 py-3">
+                <!-- <img src="" alt=""> -->
+                <i class="ri-shopping-cart-2-line text-5xl"></i>
+                <h1 class="font-semibold text-2xl">Order Summary</h1>
+            </div>
 
-    <!--? Added Items in cart -->
-    <div class="orders container mx-auto w-1/2">
-        <!--* Heading -->
-        <div class="flex items-center justify-center gap-3 border-b-2 border-gray-500 py-3">
-            <!-- <img src="" alt=""> -->
-            <i class="ri-shopping-cart-2-line text-5xl"></i>
-            <h1 class="font-semibold text-2xl">Order Summary</h1>
-        </div>
-
-        <!--* Order List -->
-        <div class="order-list border-b-2 border-gray-500">
-            <!-- 1 Order -->
-            <div class="flex items-center my-6">
-                <img class="w-28 h-28 rounded-md object-cover" src="https://images.unsplash.com/photo-1485962093642-5f4386e84429?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGZvb2QlMjB2ZWd8ZW58MHx8MHx8fDA%3D" alt="">
-                <div class="flex-1 px-4">
-                    <h1 class="font-semibold text-xl">Food Name</h1>
-                    <div class="flex gap-3">
-                        <span class="font-semibold text-xl">VEG</span>
-                        <img src="../../img/veg.png" class="w-6" alt="">
+            <!--* Order List -->
+            <div class="order-list border-b-2 border-gray-500">
+                <% for (let food of Object.values(session.cart.items)) { %>
+                    <!-- 1 Order in Cart-->
+                    <div class="flex items-center my-6">
+                        <img class="w-28 h-28 rounded-md object-cover" src="../../img/items/<%= food.item.image %>" alt="not loading">
+                        <div class="flex-1 px-4">
+                            <h1 class="font-semibold text-xl"><%= food.item.name %></h1>
+                            <div class="flex gap-3">
+                                <span class="font-semibold text-xl">VEG</span>
+                                <img src="../../img/veg.png" class="w-6" alt="">
+                            </div>
+                        </div>
+        
+                        <span class="Quantity flex-1 font-semibold text-xl">x<%= food.qty %></span>
+                        <span class="Price font-semibold text-xl">₹ <%= food.item.price * food.qty %></span>
                     </div>
+                <% } %>
+            </div>
+
+            <!--* Total Amount -->
+            <div class="Total-amount-address">
+                <!-- Total Amount -->
+                <div class="text-right py-3">
+                    <span class="text-lg font-semibold px-2">Total Amount:</span>
+                    <span class="text-2xl font-semibold text-green-500">₹ <%= session.cart.totalPrice %></span>
                 </div>
 
-                <span class="Quantity flex-1 font-semibold text-xl">1 Pcs</span>
-                <span class="Price font-semibold text-xl">₹600</span>
-            </div>
-            <!-- 1 Order -->
-            <div class="flex items-center my-6">
-                <img class="w-28 h-28 rounded-md object-cover" src="https://images.unsplash.com/photo-1485962093642-5f4386e84429?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGZvb2QlMjB2ZWd8ZW58MHx8MHx8fDA%3D" alt="">
-                <div class="flex-1 px-4">
-                    <h1 class="font-semibold text-xl">Food Name</h1>
-                    <div class="flex gap-3">
-                        <span class="font-semibold text-xl">VEG</span>
-                        <img src="../../img/veg.png" class="w-6" alt="">
-                    </div>
-                </div>
+                <!-- form -->
+                <div>
+                    <form action="" class="flex flex-col items-end gap-5 w-full my-2">
+                        <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
+                        <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
+                        <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
 
-                <span class="Quantity flex-1 font-semibold text-xl">1 Pcs</span>
-                <span class="Price font-semibold text-xl">₹600</span>
-            </div>
-            <!-- 1 Order -->
-            <div class="flex items-center my-6">
-                <img class="w-28 h-28 rounded-md object-cover" src="https://images.unsplash.com/photo-1485962093642-5f4386e84429?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fGZvb2QlMjB2ZWd8ZW58MHx8MHx8fDA%3D" alt="">
-                <div class="flex-1 px-4">
-                    <h1 class="font-semibold text-xl">Food Name</h1>
-                    <div class="flex gap-3">
-                        <span class="font-semibold text-xl">VEG</span>
-                        <img src="../../img/veg.png" class="w-6" alt="">
-                    </div>
-                </div>
+                        <!-- btn when user is logged in -->
+                        <div>
+                            <button type="submit" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Order Now</button>
+                        </div>
 
-                <span class="Quantity flex-1 font-semibold text-xl">1 Pcs</span>
-                <span class="Price font-semibold text-xl">₹600</span>
+                        <!-- btn when user is not logged in -->
+                <a href="" type="submit" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <!--* Total Amount -->
-        <div class="Total-amount-address">
-            <!-- Total Amount -->
-            <div class="text-right py-3">
-                <span class="text-lg font-semibold px-2">Total Amount:</span>
-                <span class="text-2xl font-semibold text-green-500">₹600</span>
-            </div>
-
-            <!-- form -->
-            <div>
-                <form action="" class="flex flex-col items-end gap-5 w-full my-2">
-                    <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
-                    <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
-                    <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
-
-                    <!-- btn when user is logged in -->
-                    <div>
-                        <button type="submit" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Order Now</button>
-                    </div>
-
-                    <!-- btn when user is not logged in -->
-            <a href="" type="submit" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a>
-                </form>
+    <% } else { %> 
+        <!--? Empty cart -->
+        <div class="empty-cart py-5 h-screen">
+            <div class="container mx-auto text-center flex flex-col items-center justify-center gap-5">
+                <h1 class="font-bold text-5xl">Your Cart is Empty !</h1>
+                <p class="font-medium italic text-2xl text-gray-800">Please order something from the Home Page.</p>
+                
+                <img class="sm:w-1/2" src="../img/empty-cart.png" alt="">
+        
+                <a href="/" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Back To Home</a>
             </div>
         </div>
-    </div>
+    <% } %>
 </section>

@@ -5,7 +5,7 @@ function homeController() {
     return {
         async home(req, res) {
             const foodItems = await menuModel.find();
-            res.render('homePage', { foodItems: foodItems });
+            res.render('homePage', { food: foodItems });
             // console.log(foodItems);
         }
     }
