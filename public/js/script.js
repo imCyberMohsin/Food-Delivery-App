@@ -17,7 +17,7 @@ function updateCart(itemData) {
             type: 'success',
             timeout: 1000,
             text: "Item added to cart",
-            // layout: 'topLeft',
+            layout: 'bottomRight',
             // progressBar: false,
         }).show();
     }).catch(err => {
