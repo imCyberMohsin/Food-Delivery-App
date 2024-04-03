@@ -35,7 +35,7 @@
                 </li>
                 <!-- Cart Button -->
                 <a href="/cart" class="flex items-center gap-3 my-3 cart-icon px-6 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
-                    <span id="cartCounter" class="text-2xl font-semibold"><%= session.cart ? session.cart.totalQty : "" %></span>
+                    <span id="cartCounter" class="text-2xl font-semibold"><%= session.cart ? session.cart.totalQty : "0" %></span>
                     <i class="ri-shopping-cart-2-line text-3xl"></i>
                 </a>
             </ul>
