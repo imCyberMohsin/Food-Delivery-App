@@ -18,12 +18,12 @@ DB.on('error', (error) => console.error(error));
 
 //? Middlewares
 // app.use(expressLayout);                          // using express layout
-app.use(express.urlencoded({ extended: true }));    // Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));    // to parse form data
 app.set('views', path.join(__dirname, '/views'));   // views path
 app.set('view engine', 'ejs');                      // view engine setup
 app.use(express.static('public'));                  // static folder path
 app.use(flash());                                   // using flash message
-app.use(express.json());
+app.use(express.json());                            // to parse json data
 
 //? Session store to DB (This was creating some error so i used 'store' in session config)
 // let mongoStore = new mongoDBstore({

@@ -20,6 +20,7 @@ const allRoutes = (app) => {
 
     //? Signup Page
     app.get('/signup', authController().signup)
+    app.post('/signup', authController().postSignup)
 }
 
 module.exports = allRoutes;
