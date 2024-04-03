@@ -6,21 +6,26 @@
 const homeController = require('../app/http/controllers/homeController')
 const authController = require('../app/http/controllers/authController')
 const cartController = require('../app/http/controllers/customers/cartController')
+const isLoggedIn = require('../app/http/middlewares/isLoggedIn');
 
 const allRoutes = (app) => {
-    //? Home Page
+    //? Home Route
     app.get('/', homeController().home); // using controller as a callback function
 
-    //? Cart Page
+    //? Cart Route
     app.get('/cart', cartController().index)
     app.post('/update-cart', cartController().update)
 
-    //? Login Page
-    app.get('/login', authController().login)
+    //? Login Route
+    app.get('/login', isLoggedIn, authController().login)
+    app.post('/login', authController().postLogin)
 
-    //? Signup Page
-    app.get('/signup', authController().signup)
+    //? Signup Route
+    app.get('/signup', isLoggedIn, authController().signup)
     app.post('/signup', authController().postSignup)
+
+    //? Logout Route 
+    app.get('/logout', authController().logout)
 }
 
 module.exports = allRoutes;

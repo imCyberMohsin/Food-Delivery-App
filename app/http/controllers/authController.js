@@ -1,15 +1,38 @@
 //! Login & Signup controllers
 const userModel = require('../../models/user');
 const bcrypt = require('bcrypt');
+const passport = require('passport');   // passport.js for login
 
 function authController() {
     return {
-        // Login
+        //? Login
         login(req, res) {
             res.render('loginPage');
         },
+        postLogin(req, res, next) {
+            passport.authenticate('local', (err, user, info) => {
+                if (err) {
+                    req.flash('error', info.message)
+                    return next(err);
+                }
 
-        // Signup
+                if (!user) {
+                    req.flash('error', info.message)
+                    return res.redirect('/login');
+                }
+
+                req.logIn(user, (err) => {
+                    if (err) {
+                        req.flash('error', info.message)
+                        return next(err);
+                    }
+                    // Redirect home page if user is found and login is successful
+                    return res.redirect('/');
+                })
+            })(req, res, next);
+        },
+
+        //? Signup
         signup(req, res) {
             res.render('signupPage');
         },
@@ -44,12 +67,20 @@ function authController() {
             //* Save to DB 
             user.save().then((user) => {
                 // if user is created - redirect to login page
-                res.redirect('/');
+                res.redirect('/login');
             }).catch(err => {
                 req.flash('error', 'Failed to signup!');
                 return res.redirect('/signup');
             })
             // console.log(req.body);
+        },
+
+        //? Logout
+        logout(req, res, next) {
+            req.logout((err) => {
+                if (err) { return next(err) };
+                res.redirect('/login');
+            })
         }
     }
 }
