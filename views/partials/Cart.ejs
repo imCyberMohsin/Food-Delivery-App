@@ -31,7 +31,7 @@
             </div>
 
             <!--* Total Amount -->
-            <div class="Total-amount-address">
+            <div class="Total-amount-address flex flex-col">
                 <!-- Total Amount -->
                 <div class="text-right py-3">
                     <span class="text-lg font-semibold px-2">Total Amount:</span>
@@ -39,21 +39,25 @@
                 </div>
 
                 <!-- form -->
-                <div>
-                    <form action="" class="flex flex-col items-end gap-5 w-full my-2">
-                        <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
-                        <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
-                        <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
-
-                        <!-- btn when user is logged in -->
-                        <div>
-                            <button type="submit" class="text-2xl font-semibold px-6 py-2 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Place Order</button>
-                        </div>
-
-                        <!-- btn when user is not logged in -->
-                        <!-- <a href="" type="submit" class="text-2xl font-semibold px-6 py-2 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a> -->
-                    </form>
-                </div>
+                <!--? If user is logged in -->
+                <% if (user) { %>
+                    <div>
+                        <form action="" class="flex flex-col items-end gap-5 w-full my-2">
+                            <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
+                            <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
+                            <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
+    
+                            <div>
+                                <button type="submit" class="text-2xl font-semibold px-6 py-2 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Place Order</button>
+                            </div>
+                        </form>
+                    </div>    
+                <% } else { %>
+                    <!--? If user is not logged in -->
+                    <div class="btn flex w-full justify-end">
+                        <a href="/login" type="submit" class="text-2xl text-center font-semibold px-6 py-2 my-4 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a>
+                    </div>
+                <% } %>
             </div>
         </div>
     <% } else { %> 

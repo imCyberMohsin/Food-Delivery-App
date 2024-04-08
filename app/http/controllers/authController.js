@@ -10,6 +10,14 @@ function authController() {
             res.render('loginPage');
         },
         postLogin(req, res, next) {
+            const { email, password } = req.body
+            //* Validations and display flash error
+            if (!email || !password) {
+                req.flash('error', 'Fields are empty!');
+                // storing the input data before refreshing the page
+                return res.redirect('/login');
+            }
+
             passport.authenticate('local', (err, user, info) => {
                 if (err) {
                     req.flash('error', info.message)
