@@ -8,7 +8,7 @@ const app = express()
 const flash = require('express-flash');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const mongoDBstore = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 const passport = require('passport');   // passport.js for login
 
 //? Database Connection
@@ -27,7 +27,7 @@ app.use(flash());                                   // using flash message
 app.use(express.json());                            // to parse json data
 
 //? Session store to DB (This was creating some error so i used 'store' in session config)
-// let mongoStore = new mongoDBstore({
+// let mongoStore = new MongoStore({
 //     mongooseConnection: DB,     // Database
 //     collection: 'sessions',     // collection in DB
 // }) 
@@ -37,7 +37,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },     // 24hrs cookies validation
-    store: mongoDBstore.create({
+    store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI,         // MongoDB connection URL
         collectionName: 'sessions',              // Collection name in the DB
     })
