@@ -59,6 +59,8 @@ function authController() {
             const existingUser = await userModel.findOne({ email: email });
             if (existingUser) {
                 req.flash('error', 'Email Already Exists');
+                req.flash('name', name);
+                req.flash('email', email);
                 return res.redirect('/signup');
             }
 
@@ -75,7 +77,7 @@ function authController() {
             //* Save to DB 
             user.save().then((user) => {
                 // if user is created - redirect to login page
-                res.redirect('/login');
+                return res.redirect('/login');
             }).catch(err => {
                 req.flash('error', 'Failed to signup!');
                 return res.redirect('/signup');
