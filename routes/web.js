@@ -6,7 +6,7 @@
 const homeController = require('../app/http/controllers/homeController')
 const authController = require('../app/http/controllers/authController')
 const cartController = require('../app/http/controllers/customers/cartController')
-const isLoggedIn = require('../app/http/middlewares/isLoggedIn');
+const guest = require('../app/http/middlewares/guest');
 
 const allRoutes = (app) => {
     //? Home Route
@@ -17,11 +17,11 @@ const allRoutes = (app) => {
     app.post('/update-cart', cartController().update)
 
     //? Login Route
-    app.get('/login', isLoggedIn, authController().login)
+    app.get('/login', guest, authController().login)
     app.post('/login', authController().postLogin)
 
     //? Signup Route
-    app.get('/signup', isLoggedIn, authController().signup)
+    app.get('/signup', guest, authController().signup)
     app.post('/signup', authController().postSignup)
 
     //? Logout Route 

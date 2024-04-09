@@ -1,11 +1,10 @@
 //! Passport Config used in the main server file app.js 
-const localStrategy = require('passport-local').Strategy
-const user = require('../models/user');
+const LocalStrategy = require('passport-local').Strategy
 const userModel = require('../models/user');
 const bcrypt = require('bcrypt');
 
 function passportConfig(passport) {
-    passport.use(new localStrategy({ usernameField: 'email' }, async (email, password, done) => {
+    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
         //* check if user with the email exists in the DB
         const user = await userModel.findOne({ email: email })
         if (!user) {
@@ -26,14 +25,14 @@ function passportConfig(passport) {
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });
-    passport.deserializeUser((id, done) => {
-        userModel.findById(id)
-            .then(user => {
-                done(null, user);
-            })
-            .catch(err => {
-                done(err, null);
-            });
+
+    passport.deserializeUser(async (id, done) => {
+        try {
+            const user = await userModel.findById(id);
+            done(null, user);
+        } catch (error) {
+            done(error);
+        }
     });
 }
 

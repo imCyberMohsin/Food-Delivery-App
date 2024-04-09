@@ -26,11 +26,6 @@ app.use(express.static('public'));                  // static folder path
 app.use(flash());                                   // using flash message
 app.use(express.json());                            // to parse json data
 
-//? Session store to DB (This was creating some error so i used 'store' in session config)
-// let mongoStore = new MongoStore({
-//     mongooseConnection: DB,     // Database
-//     collection: 'sessions',     // collection in DB
-// }) 
 //? Session Config (to store a session to the DB)
 app.use(session({
     secret: process.env.COOKIE_SECRET,

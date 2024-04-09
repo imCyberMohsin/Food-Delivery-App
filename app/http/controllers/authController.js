@@ -86,11 +86,10 @@ function authController() {
         },
 
         //? Logout
-        logout(req, res, next) {
-            req.logout((err) => {
-                if (err) { return next(err) };
-                res.redirect('/login');
-            })
+        logout(req, res) {
+            req.logout(); // function by Passport to logout the user
+            req.flash('success_msg', 'You have been logged out successfully'); // flash a success message
+            res.redirect('/'); // Redirect the user to Home page
         }
     }
 }
