@@ -37,3 +37,13 @@ addTocart.forEach((eachBtn) => {
         // console.log(itemData);
     });
 });
+
+//! Remove Order Placed Alert After 3 Seconds (Not working)
+window.addEventListener('DOMContentLoaded', function () {
+    let successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+        setTimeout(function () {
+            successAlert.style.display = 'hidden';
+        }, 3000); // 3000 milliseconds = 3 seconds
+    }
+});

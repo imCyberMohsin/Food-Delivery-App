@@ -38,11 +38,11 @@
                     <span class="text-2xl font-semibold text-green-500">₹ <%= session.cart.totalPrice %></span>
                 </div>
 
-                <!-- form -->
+                <!--Address form -->
                 <!--? If user is logged in -->
                 <% if (user) { %>
                     <div>
-                        <form action="" class="flex flex-col items-end gap-5 w-full my-2">
+                        <form action="/orders" method="post" class="flex flex-col items-end gap-5 w-full my-2">
                             <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
                             <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
                             <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
