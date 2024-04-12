@@ -38,10 +38,37 @@
                     <% }); %>
                 <% } else { %>
                     <tr>
-                        <td class="px-4"><span>No Orders Placed Yet!</span></td>
+                        <td class="px-4 py-2">
+                            <h3 class="text-xl">No Orders Placed Yet!</h3>
+                        </td>
                     </tr>
                 <% } %>
             </tbody>
         </table>
     </div>
 </section>
+
+<script>
+    //! Remove Order Placed Alert After 3 Seconds
+    window.addEventListener('DOMContentLoaded', function () {
+        let successAlert = document.querySelector('#success-alert');
+        if (successAlert) {
+            // Initially set opacity to 0
+            successAlert.style.opacity = '0';
+
+            setTimeout(function () {
+                successAlert.style.opacity = '1';
+                successAlert.style.display = 'flex';
+                successAlert.style.transition = 'opacity 0.5s ease';
+            }, 0);
+
+            // After 3 seconds, gradually change opacity back to 0
+            setTimeout(function () {
+                successAlert.style.transition = 'opacity 0.5s ease';
+                successAlert.style.opacity = '0';
+                successAlert.style.display = 'none';
+            }, 3000);
+        }
+    });
+
+</script>

@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');   // passport.js for login
 
 function authController() {
+    // Function to redirect 'user' OR 'admin'
+    const _getRedirectUrl = (req) => {
+        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders';
+    }
+
     return {
         //? Login
         login(req, res) {
@@ -34,8 +39,10 @@ function authController() {
                         req.flash('error', info.message)
                         return next(err);
                     }
-                    // Redirect home page if user is found and login is successful
-                    return res.redirect('/');
+                    // Redirect after login is successful
+                    // For customer  -> /customer/orders
+                    // For admin     -> /admin/orders
+                    return res.redirect(_getRedirectUrl(req));
                 })
             })(req, res, next);
         },
