@@ -24,10 +24,22 @@
                 <li class="py-3">
                     <a href="/" class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Home</a>
                 </li>
-                <li class="py-3">
-                    <a href="/customer/orders" class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Orders</a>
-                </li>
+                <!-- Condotionally Display User & Admin Order BTN in Navbar -->
+                <% if (user && user.role==='admin' ) { %>
+                    <li class="py-3">
+                        <a href="/admin/orders" class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Orders Admin</a>
+                    </li>
+                    <li class="py-3">
+                        <a href="/customer/orders" class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Orders User</a>
+                    </li>
+                    <% } else { %>
+                        <li class="py-3">
+                            <a href="/customer/orders"
+                                class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Orders</a>
+                        </li>
+                <% } %>
 
+                <!-- Displaying Login/Signup Btn only if user is not loggedIn -->
                 <% if (user) { %>
                     <li class="py-3">
                         <a href="/logout" class="text-lg font-semibold hover:text-green-500 transition-all duration-150">Logout</a>
