@@ -1,4 +1,57 @@
 <!--! Order Status -->
-<section class="orderStatus">
-    <h1>Status Page</h1>
+<section class="orderStatus bg-gray-200 min-h-screen">
+    <div class="container mx-auto">
+        <div class="box-status w-2/3 mx-auto">
+            <div class="flex items-center justify-between py-20">
+                <h2 class="font-bold text-2xl">Track Order Status</h2>
+                <h5 class="font-semibold text-base">ORDER ID: <span class="text-green-500">
+                        <%= order._id %>
+                    </span></h5>
+
+                <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+            </div>
+
+            <ul>
+                <li class="status-line text-xl font-semibold pb-16" data-status="order_placed"><span>Order Placed</span></li>
+                <li class="status-line text-xl font-semibold pb-16" data-status="confirmed"><span>Confirmed</span></li>
+                <li class="status-line text-xl font-semibold pb-16" data-status="prepared"><span>Preparing Food</span></li>
+                <li class="status-line text-xl font-semibold pb-16" data-status="delivered"><span>Out For Delivery</span></li>
+                <li class="status-line text-xl font-semibold" data-status="completed"><span>Completed</span></li>
+            </ul>
+        </div>
+    </div>
 </section>
+
+<!-- Moment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<!--? Change order status -->
+<script>
+    let statuses = document.querySelectorAll('.status-line');
+    // console.log(statuses);
+    let order = document.querySelector('#hiddenInput') ? document.querySelector('#hiddenInput').value : null;
+    order = JSON.parse(order);
+    // console.log(order);
+    let time = document.createElement('small')
+
+    function updateStatus(order) {
+        let stepCompleted = true;
+
+        statuses.forEach((status) => {
+            let dataProp = status.dataset.status
+
+            if(stepCompleted){
+                status.classList.add('step-completed');
+            } 
+            if(dataProp === order.status){
+                stepCompleted = false;
+                time.innerText = moment(order.updatedAt).format('hh:mm A');
+                status.appendChild(time)
+                if(status.nextElementSibling){
+                    status.nextElementSibling.classList.add('current');
+                }
+            }
+        });
+    }
+    updateStatus(order);
+</script>
