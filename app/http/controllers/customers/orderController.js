@@ -45,6 +45,18 @@ function orderController() {
             res.render('ordersPage', { orders: orders, moment: moment });
             // console.log(orders);
         },
+
+        async showStatus(req, res) {
+            const order = await orderModel.findById(req.params.id)
+
+            // check if user is authorized with the order
+            // if userId === orderId
+            if (req.user._id.toString() === order.customerId.toString()) {
+                return res.render('customers/orderStatusPage', { order: order });
+            }
+            // redirect to homePage if user was not allowed
+            return res.redirect('/');
+        }
     }
 }
 
