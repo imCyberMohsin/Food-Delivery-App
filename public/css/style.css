@@ -9,6 +9,7 @@
 /* Added Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding: 100px;
 }
 
 /* Removed Scrollbar */
