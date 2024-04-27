@@ -1,9 +1,9 @@
 <!--! Order Status -->
 <section class="orderStatus bg-gray-200 min-h-screen">
     <div class="container mx-auto">
-        <div class="box-status w-2/3 mx-auto">
+        <div class="box-status w-full lg:w-2/3 mx-auto px-5">
             <div class="flex items-center justify-between py-20">
-                <h2 class="font-bold text-2xl">Track Order Status</h2>
+                <h2 class="font-bold text-xl md:text-2xl">Track Order Status</h2>
                 <h5 class="font-semibold text-base">ORDER ID: <span class="text-green-500">
                         <%= order._id %>
                     </span></h5>
@@ -12,11 +12,11 @@
             </div>
 
             <ul>
-                <li class="status-line text-xl font-semibold pb-16" data-status="order_placed"><span>Order Placed</span></li>
-                <li class="status-line text-xl font-semibold pb-16" data-status="confirmed"><span>Confirmed</span></li>
-                <li class="status-line text-xl font-semibold pb-16" data-status="prepared"><span>Preparing Food</span></li>
-                <li class="status-line text-xl font-semibold pb-16" data-status="delivered"><span>Out For Delivery</span></li>
-                <li class="status-line text-xl font-semibold" data-status="completed"><span>Completed</span></li>
+                <li class="status-line text-lg md:text-xl font-semibold pb-16" data-status="order_placed"><span>Order Placed</span></li>
+                <li class="status-line text-lg md:text-xl font-semibold pb-16" data-status="confirmed"><span>Confirmed</span></li>
+                <li class="status-line text-lg md:text-xl font-semibold pb-16" data-status="prepared"><span>Preparing Food</span></li>
+                <li class="status-line text-lg md:text-xl font-semibold pb-16" data-status="delivered"><span>Out For Delivery</span></li>
+                <li class="status-line text-lg md:text-xl font-semibold" data-status="completed"><span>Completed</span></li>
             </ul>
         </div>
     </div>

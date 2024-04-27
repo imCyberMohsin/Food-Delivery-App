@@ -4,20 +4,24 @@
         <h1 class="text-3xl font-semibold">All Orders Admin</h1>
 
         <!-- Table -->
-        <table class="w-full bg-white table-auto rounded-md my-4">
-            <thead>
-                <tr>
-                    <th class="bg-green-500 px-4 py-2 text-left">Orders</th>
-                    <th class="bg-green-500 px-4 py-2 text-left">Customer</th>
-                    <th class="bg-green-500 px-4 py-2 text-left">Phone</th>
-                    <th class="bg-green-500 px-4 py-2 text-left">Address</th>
-                    <th class="bg-green-500 px-4 py-2 text-left">Status</th>
-                    <th class="bg-green-500 px-4 py-2 text-left">Placed At</th>
-                </tr>
-            </thead>
-
-            <tbody id="orderTableBody">
-            </tbody>
-        </table>
+        <!-- Remove the wrapper div, if any issue -->
+        <div class="overflow-x-auto">
+            <table class="w-full bg-white table-auto rounded-md my-4 block sm:inline-table">
+                <thead>
+                    <tr>
+                        <th class="bg-green-500 px-4 py-2 text-left">Orders</th>
+                        <th class="bg-green-500 px-4 py-2 text-left">Customer</th>
+                        <th class="bg-green-500 px-4 py-2 text-left">Phone</th>
+                        <th class="bg-green-500 px-4 py-2 text-left">Address</th>
+                        <th class="bg-green-500 px-4 py-2 text-left">Status</th>
+                        <th class="bg-green-500 px-4 py-2 text-left">Placed At</th>
+                    </tr>
+                </thead>
+    
+                <!-- Data will be injected here dynamically -->
+                <tbody id="orderTableBody">
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
