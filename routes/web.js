@@ -9,6 +9,7 @@ const cartController = require('../app/http/controllers/customers/cartController
 const orderController = require('../app/http/controllers/customers/orderController')
 const adminOrderController = require('../app/http/controllers/admin/orderController')
 const statusOrderController = require('../app/http/controllers/admin/statusController')
+const errorController = require('../app/http/controllers/errorController')
 
 //* Middlewares 
 const guest = require('../app/http/middlewares/guest');             // LoggedIn user cannot access /login & /signup only Guests can
@@ -43,6 +44,9 @@ const allRoutes = (app) => {
 
     //? Logout Route 
     app.get('/logout', authController().logout)
+
+    //? Error Route 
+    app.get('*', errorController().err)
 }
 
 module.exports = allRoutes;
