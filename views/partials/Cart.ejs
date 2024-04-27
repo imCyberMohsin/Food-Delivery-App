@@ -2,16 +2,16 @@
 <section class="cart bg-gray-200 py-6">
     <% if (session.cart) { %>
         <!--? Added Items in cart -->
-        <div class="orders container mx-auto w-1/2">
+        <div class="orders container mx-auto px-6 xl:w-1/2">
             <!--* Heading -->
-            <div class="flex items-center justify-center gap-3 border-b-2 border-gray-500 py-3">
+            <div class="flex items-center justify-center gap-3 border-b border-gray-500 py-3">
                 <!-- <img src="" alt=""> -->
                 <i class="ri-shopping-cart-2-line text-5xl"></i>
                 <h1 class="font-semibold text-2xl">Order Summary</h1>
             </div>
 
             <!--* Order List -->
-            <div class="order-list border-b-2 border-gray-500">
+            <div class="order-list border-b border-gray-500">
                 <% for (let food of Object.values(session.cart.items)) { %>
                     <!-- 1 Order in Cart-->
                     <div class="flex items-center my-6">
@@ -55,7 +55,7 @@
                 <% } else { %>
                     <!--? If user is not logged in -->
                     <div class="btn flex w-full justify-end">
-                        <a href="/login" type="submit" class="text-2xl text-center font-semibold px-6 py-2 my-4 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a>
+                        <a href="/login" type="submit" class="text-xl text-center font-semibold px-4 py-2 my-4 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Login To Order</a>
                     </div>
                 <% } %>
             </div>
@@ -69,7 +69,7 @@
                 
                 <img class="sm:w-1/2" src="../img/empty-cart.png" alt="">
         
-                <a href="/" class="text-2xl font-semibold px-6 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Back To Home</a>
+                <a href="/" class="text-xl font-semibold px-4 py-3 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Back To Home</a>
             </div>
         </div>
     <% } %>
