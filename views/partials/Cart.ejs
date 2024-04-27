@@ -43,9 +43,9 @@
                 <% if (user) { %>
                     <div>
                         <form action="/orders" method="post" class="flex flex-col items-end gap-5 w-full my-2">
-                            <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name">
-                            <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number">
-                            <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address">
+                            <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name" required>
+                            <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                            <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address" required>
     
                             <div>
                                 <button type="submit" class="text-2xl font-semibold px-6 py-2 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Place Order</button>
