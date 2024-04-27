@@ -3,15 +3,22 @@
     <div class=" flex flex-wrap items-center justify-between mx-auto p-2">
         <!-- Left -->
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <div class="w-14 hover:bg-green-500 transition-all duration-200 rounded-full overflow-hidden">
+            <div class="w-14 hover:bg-green-500 transition-all duration-300 rounded-full overflow-hidden">
                 <img src="../../img/logo-black.png" alt="Logo"/>
             </div>
-            <span class="self-center text-2xl font-semibold whitespace-nowrap hover:text-green-500 transition-all duration-200">Food Time</span>
+            <!-- Display user name when loggedIn -->
+            <% if (user) { %>
+                <div class="name font-semibold whitespace-nowrap flex justify-center items-center gap-2">
+                    <span class="text-2xl">Hii! </span> <span class="text-xl italic hover:text-green-500 transition-all duration-300"><%= user.name %></span>
+                </div>
+            <% } else { %>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap hover:text-green-500 transition-all duration-300">Food Time</span>
+            <% } %>
         </a>
 
         <!-- Hidden Button For Mobile -->
         <button id="mobile-menu-toggle" type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:text-green-500 transition-all duration-150"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-black rounded-lg md:hidden hover:text-green-500 transition-all duration-350"
             aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <i class="fa-solid fa-bars text-3xl"></i>
@@ -22,42 +29,42 @@
             <ul
                 class="flex flex-col justify-center items-center p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent">
                 <li class="py-3">
-                    <a href="/" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Home</a>
+                    <a href="/" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Home</a>
                 </li>
                 <li class="py-3">
-                    <a href="/#items" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Menu</a>
+                    <a href="/#items" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Menu</a>
                 </li>
                 <!-- Condotionally Display User & Admin Order BTN in Navbar -->
                 <% if (user && user.role==='admin' ) { %>
                     <li class="py-3">
-                        <a href="/admin/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Orders Admin</a>
+                        <a href="/admin/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders Admin</a>
                     </li>
                     <li class="py-3">
-                        <a href="/customer/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Orders User</a>
+                        <a href="/customer/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders User</a>
                     </li>
                     <% } else { %>
                         <li class="py-3">
                             <a href="/customer/orders"
-                                class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Orders</a>
+                                class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders</a>
                         </li>
                 <% } %>
 
                 <!-- Displaying Login/Signup Btn only if user is not loggedIn -->
                 <% if (user) { %>
                     <li class="py-3">
-                        <a href="/logout" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Logout</a>
+                        <a href="/logout" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Logout</a>
                     </li>
                 <% } else { %>
                     <li class="py-3">
-                        <a href="/signup" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Signup</a>
+                        <a href="/signup" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Signup</a>
                     </li>
                     <li class="py-3">
-                        <a href="/login" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-150">Login</a>
+                        <a href="/login" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Login</a>
                     </li>
                 <% } %>
 
                 <!-- Cart Button -->
-                <a href="/cart" class="flex items-center gap-3 my-3 cart-icon px-6 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-200">
+                <a href="/cart" class="flex items-center gap-3 my-3 cart-icon px-6 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-300">
                     <span id="cartCounter" class="text-2xl font-semibold"><%= session.cart ? session.cart.totalQty : "0" %></span>
                     <i class="ri-shopping-cart-2-line text-3xl"></i>
                 </a>
