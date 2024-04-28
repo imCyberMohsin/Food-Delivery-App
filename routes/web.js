@@ -10,6 +10,7 @@ const orderController = require('../app/http/controllers/customers/orderControll
 const adminOrderController = require('../app/http/controllers/admin/orderController')
 const statusOrderController = require('../app/http/controllers/admin/statusController')
 const errorController = require('../app/http/controllers/errorController')
+const searchController = require('../app/http/controllers/searchController')
 
 //* Middlewares 
 const guest = require('../app/http/middlewares/guest');             // LoggedIn user cannot access /login & /signup only Guests can
@@ -44,6 +45,9 @@ const allRoutes = (app) => {
 
     //? Logout Route 
     app.get('/logout', authController().logout)
+
+    //? Search Route
+    app.get('/search', searchController().search)
 
     //? Error Route 
     app.get('*', errorController().err)

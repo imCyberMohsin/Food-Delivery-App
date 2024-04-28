@@ -26,46 +26,60 @@
 
         <!-- Right -->
         <div class="hidden w-full h-screen sm:h-auto md:block md:w-auto" id="navbar-default">
-            <ul
-                class="flex flex-col justify-center items-center p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent">
+            <ul class="flex flex-col justify-center items-center p-4 md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-transparent">
                 <li class="py-3">
-                    <a href="/" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Home</a>
+                    <a href="/" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                        <i class="ri-home-3-line"></i> Home
+                    </a>
                 </li>
                 <li class="py-3">
-                    <a href="/#items" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Menu</a>
+                    <a href="/#items" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                        <i class="ri-restaurant-line"></i> Menu
+                    </a>
                 </li>
                 <!-- Condotionally Display User & Admin Order BTN in Navbar -->
                 <% if (user && user.role==='admin' ) { %>
                     <li class="py-3">
-                        <a href="/admin/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders Admin</a>
+                        <a href="/admin/orders" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-shopping-bag-line"></i> Orders Admin
+                        </a>
                     </li>
                     <li class="py-3">
-                        <a href="/customer/orders" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders User</a>
-                    </li>
-                    <% } else { %>
-                        <li class="py-3">
-                            <a href="/customer/orders"
-                                class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Orders</a>
-                        </li>
-                <% } %>
-
-                <!-- Displaying Login/Signup Btn only if user is not loggedIn -->
-                <% if (user) { %>
-                    <li class="py-3">
-                        <a href="/logout" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Logout</a>
+                        <a href="/customer/orders" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-shopping-bag-line"></i> Orders User
+                        </a>
                     </li>
                 <% } else { %>
                     <li class="py-3">
-                        <a href="/signup" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Signup</a>
-                    </li>
-                    <li class="py-3">
-                        <a href="/login" class="text-lg font-semibold hover:text-green-500 hover:underline underline-offset-2 transition-all duration-350">Login</a>
+                        <a href="/customer/orders" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-shopping-bag-line"></i> Orders
+                        </a>
                     </li>
                 <% } %>
-
+        
+                <!-- Displaying Login/Signup Btn only if user is not loggedIn -->
+                <% if (user) { %>
+                    <li class="py-3">
+                        <a href="/logout" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-login-box-line"></i> Logout
+                        </a>
+                    </li>
+                <% } else { %>
+                    <li class="py-3">
+                        <a href="/signup" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-user-add-line"></i> Signup
+                        </a>
+                    </li>
+                    <li class="py-3">
+                        <a href="/login" class="text-lg font-medium hover:text-green-500 hover:underline underline-offset-4 transition-all duration-350">
+                            <i class="ri-login-box-line"></i> Login
+                        </a>
+                    </li>
+                <% } %>
+        
                 <!-- Cart Button -->
                 <a href="/cart" class="flex items-center gap-3 my-3 cart-icon px-6 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 hover:text-white hover:border-green-600 transition-all duration-300">
-                    <span id="cartCounter" class="text-2xl font-semibold"><%= session.cart ? session.cart.totalQty : "0" %></span>
+                    <span id="cartCounter" class="text-2xl font-medium"><%= session.cart ? session.cart.totalQty : "0" %></span>
                     <i class="ri-shopping-cart-2-line text-3xl"></i>
                 </a>
             </ul>
