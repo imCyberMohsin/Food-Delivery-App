@@ -15,6 +15,10 @@ const menuSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    category: {
+        type: String,
+        default: "all"
+    }
 })
 
 // Creating model using schema and exporting

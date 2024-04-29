@@ -4,10 +4,18 @@
 
     <!-- All Items -->
     <div class="items my-3">
+        <!-- Add filter buttons with Tailwind CSS classes -->
+        <div class="filter-buttons flex justify-between sm:justify-center my-8 space-x-3 sm:space-x-10 ">
+            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition duration-300" data-category="all">All</button>
+            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition duration-300" data-category="pizza">Pizza</button>
+            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition duration-300" data-category="burger">Burger</button>
+            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition duration-300" data-category="healthy">Healthy</button>
+            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition duration-300" data-category="drinks">Drinks</button>
+        </div>
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <!-- Item card -->
             <% foodItems.forEach(function(item) { %>
-                <div class="cursor-pointer item-card p-2 flex flex-col gap-2 border bg-gray-100 rounded-md hover:border-green-500 hover:bg-green-100 transition-all duration-300">
+                <div class="cursor-pointer item-card p-2 flex flex-col gap-2 border bg-gray-100 rounded-md hover:border-green-500 hover:bg-green-100 transition-all duration-300" data-category="<%= item.category %>">
                     <img loading="lazy" class="w-full h-64 rounded-md object-cover" src="../../img/items/<%= item.image %>" alt="">
     
                     <div class="text-center flex flex-col items-center">
@@ -30,3 +38,28 @@
         </div>
     </div>
 </section>
+
+<!--! Script to Filter Menu Items -->
+<!-- Script to Filter Menu Items -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const itemCards = document.querySelectorAll('.item-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const category = this.dataset.category;
+
+                itemCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+
+                    if (category === 'all' || cardCategory === category) {
+                        card.classList.remove('hidden'); // Show the item card
+                    } else {
+                        card.classList.add('hidden'); // Hide the item card
+                    }
+                });
+            });
+        });
+    });
+</script>

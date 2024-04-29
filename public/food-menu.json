@@ -1,52 +1,62 @@
 [
-  {
-    "name": "Pancake",
-    "image": "food-1.png",
-    "price": "400"
-  },
-  {
-    "name": "Toast Bread",
-    "image": "food-2.png",
-    "price": "300"
-  },
-  {
-    "name": "Salad",
-    "image": "food-3.png",
-    "price": "200"
-  },
-  {
-    "name": "Veg Burger",
-    "image": "food-4.png",
-    "price": "500"
-  },
-  {
-    "name": "Paneer with Sauce",
-    "image": "food-5.png",
-    "price": "350"
-  },
-  {
-    "name": "Fruit Salad",
-    "image": "food-6.png",
-    "price": "200"
-  },
-  {
-    "name": "Salad & Juice",
-    "image": "food-7.png",
-    "price": "600"
-  },
-  {
-    "name": "Veg Pizza",
-    "image": "food-8.png",
-    "price": "550"
-  },
-  {
-    "name": "Waffle",
-    "image": "food-9.png",
-    "price": "500"
-  },
-  {
-    "name": "Brownie",
-    "image": "food-10.png",
-    "price": "400"
-  }
+    {
+        "name": "Pancake",
+        "image": "food-1.png",
+        "price": "400",
+        "category": "sweet"
+    },
+    {
+        "name": "Toast Bread",
+        "image": "food-2.png",
+        "price": "300",
+        "category": "bread"
+    },
+    {
+        "name": "Salad",
+        "image": "food-3.png",
+        "price": "200",
+        "category": "healthy"
+    },
+    {
+        "name": "Veg Burger",
+        "image": "food-4.png",
+        "price": "500",
+        "category": "burger"
+    },
+    {
+        "name": "Paneer with Sauce",
+        "image": "food-5.png",
+        "price": "350",
+        "category": "veg"
+    },
+    {
+        "name": "Fruit Salad",
+        "image": "food-6.png",
+        "price": "200",
+        "category": "healthy"
+    },
+    {
+        "name": "Salad & Juice",
+        "image": "food-7.png",
+        "price": "600",
+        "category": "healthy"
+    },
+    {
+        "name": "Veg Pizza",
+        "image": "food-8.png",
+        "price": "550",
+        "category": "pizza"
+    },
+    {
+        "name": "Waffle",
+        "image": "food-9.png",
+        "price": "500",
+        "category": "sweet"
+    },
+    {
+        "name": "Brownie",
+        "image": "food-10.png",
+        "price": "400",
+        "category": "sweet"
+    }
 ]
