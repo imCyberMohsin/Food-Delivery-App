@@ -26,11 +26,12 @@ function orderController() {
 
             //* Save order to DB
             order.save().then((result) => {
-                req.flash('success', 'You order is placed')
+                // req.flash('success', 'You order is placed')
                 // Empty the cart from session of the user when order is placed
                 delete req.session.cart;
 
-                return res.redirect('/customer/orders'); // User will be redirected to orders page, after order is placed
+                // return res.redirect('/customer/orders'); // User will be redirected to orders page, after order is placed
+                return res.json({ message: 'You order is placed' })
             }).catch(err => {
                 req.flash('error', 'Failed to place your order')
                 return res.redirect('/cart');

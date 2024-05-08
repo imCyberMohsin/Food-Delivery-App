@@ -42,7 +42,7 @@
                 <!--? If user is logged in -->
                 <% if (user) { %>
                     <div>
-                        <form action="/orders" method="post" class="flex flex-col items-end gap-5 w-full my-2">
+                        <form action="/orders" method="post" id="payment-form" class="flex flex-col items-end gap-5 w-full my-2">
                             <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name" required>
                             <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
                             <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address" required>
@@ -74,3 +74,43 @@
         </div>
     <% } %>
 </section>
+
+<!--? Ajax call -->
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+    const paymentForm = document.querySelector('#payment-form');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let formData = new FormData(paymentForm);
+            let formObject = {};
+            for (let [key, value] of formData.entries()) {
+                formObject[key] = value;
+                // console.log(key, value);
+            }
+            axios.post('/orders', formObject).then((res) => {
+                // console.log(res.data);
+                // notify when order is placed
+                new Noty({
+                    type: 'success',
+                    timeout: 1000,
+                    text: res.data.message,
+                    layout: 'topRight',
+                }).show();
+
+                setTimeout(()=>{
+                    window.location.href = "/customer/orders";
+                }, 2000)
+            }).catch((err) => {
+                // console.log(err);
+                new Noty({
+                    type: 'success',
+                    timeout: 1000,
+                    text: err.data.message,
+                    layout: 'topRight',
+                }).show();
+            });
+            // console.log(formObject);
+        })
+    }
+</script>
