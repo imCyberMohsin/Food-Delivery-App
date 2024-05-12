@@ -1,5 +1,5 @@
 <!--! Cart -->
-<section class="cart bg-gray-200 py-6">
+<section class="cart bg-gray-200 py-6 min-h-screen">
     <% if (session.cart) { %>
         <!--? Added Items in cart -->
         <div class="orders container mx-auto px-6 xl:w-1/2">
@@ -43,10 +43,15 @@
                 <% if (user) { %>
                     <div>
                         <form action="/orders" method="post" id="payment-form" class="flex flex-col items-end gap-5 w-full my-2">
-                            <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Name" required>
-                            <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Phone Number" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
-                            <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-1/2 transition-all duration-200" placeholder="Address" required>
+                            <select id="paymentType" name="paymentType" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-full sm:w-1/2 transition-all duration-200 cursor-pointer">
+                                <option value="cod">Cash on Delivery</option>
+                                <option value="card">Pay with Card</option>
+                            </select>
+                            <input name="name" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-full sm:w-1/2 transition-all duration-200" placeholder="Name" required>
+                            <input name="phone" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-full sm:w-1/2 transition-all duration-200" placeholder="Phone Number" required pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                            <input name="address" type="text" class="border-2 outline-none focus:ring-4 focus:ring-green-400 rounded-md border-gray-400 p-2 w-full sm:w-1/2 transition-all duration-200" placeholder="Address" required>
     
+                            <div id="card-element" class="w-full sm:w-1/2"></div>
                             <div>
                                 <button type="submit" class="text-2xl font-semibold px-6 py-2 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-200 hover:text-white hover:border-green-600">Place Order</button>
                             </div>
@@ -75,8 +80,8 @@
     <% } %>
 </section>
 
-<!--? Ajax call -->
-<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<!--? Ajax call - code migrated to /public/js/stripe.js -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
 <script>
     const paymentForm = document.querySelector('#payment-form');
     if (paymentForm) {
@@ -113,4 +118,4 @@
             // console.log(formObject);
         })
     }
-</script>
+</script> -->
