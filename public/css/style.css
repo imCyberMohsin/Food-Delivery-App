@@ -147,3 +147,32 @@ html {
     float: right;
     margin-top: 1px;
 }
+
+/* CartPage Stripe-Widget */
+.StripeElement {
+    box-sizing: border-box;
+    /* width: 50%; */
+    /* height: 40px; */
+    margin-left: auto;
+    padding: 10px 12px;
+
+    border: 2px solid #9f9f9f;
+    border-radius: 4px;
+    background-color: white;
+
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
