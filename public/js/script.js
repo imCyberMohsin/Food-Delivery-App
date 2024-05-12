@@ -1,6 +1,8 @@
 // import axios from 'axios'; // import not working so I used CDN
 // import Noty from 'noty';   // import not working ... used CDN
 
+import { initStripe } from "./stripe.js";
+
 //? Add to cart functionality 
 const addTocart = document.querySelectorAll('.add-to-cart');
 const cartCounter = document.getElementById('cartCounter');
@@ -43,3 +45,7 @@ addTocart.forEach((eachBtn) => {
 
 
 //? Change order status code here
+
+
+//? stripe code here
+initStripe();
