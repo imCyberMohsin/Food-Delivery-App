@@ -1,16 +1,18 @@
 //! Order Controller
 const orderModel = require('../../../models/order');    // Orders Model
 const moment = require('moment');   // For formatting Date & Time
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 function orderController() {
     return {
         store(req, res) {
             // console.log(req.body);
             //* Validate request
-            const { name, phone, address } = req.body;
+            const { name, phone, address, stripeToken, paymentType } = req.body;
             if (!name || !phone || !address) {
-                req.flash('error', 'All fields are required')
-                return res.redirect('/cart');
+                return res.status(422).json({ message: 'All fields are required' })
+                // req.flash('error', 'All fields are required')
+                // return res.redirect('/cart');
             }
 
             //* Creating an order
@@ -25,18 +27,37 @@ function orderController() {
             });
 
             //* Save order to DB
-            order.save().then((result) => {
-                // req.flash('success', 'You order is placed')
-                // Empty the cart from session of the user when order is placed
-                delete req.session.cart;
+            order.save().then((placedOrder) => {
+                //* Stripe Payment 
+                if (paymentType === 'card') {
+                    return stripe.charges.create({
+                        amount: req.session.cart.totalPrice * 100,
+                        source: stripeToken,
+                        currency: 'inr',
+                        description: `Your Order: ${placedOrder._id}`
+                    }).then(() => {
+                        placedOrder.paymentStatus = true;
+                        // Save the updated order with payment status
+                        return placedOrder.save();
+                    }).then((updatedOrder) => {
+                        // Empty the cart from session of the user when order is placed
+                        delete req.session.cart;
+                        return res.json({ message: 'Payment successful, Your order is placed' });
+                    }).catch((err) => {
+                        console.error(err);
+                        delete req.session.cart; // Clear cart even if there's an error
+                        return res.json({ message: 'Payment Failed, Order Placed As COD' });
+                    });
+                } else {
+                    // Empty the cart from session of the user when order is placed
+                    delete req.session.cart;
+                    return res.json({ message: 'Order placed successfully' });
+                }
+            }).catch((err) => {
+                console.error(err);
+                return res.status(500).json({ message: 'Something Went Wrong' });
+            });
 
-                // return res.redirect('/customer/orders'); // User will be redirected to orders page, after order is placed
-                return res.json({ message: 'You order is placed' })
-            }).catch(err => {
-                req.flash('error', 'Failed to place your order')
-                return res.redirect('/cart');
-                // console.error(err);
-            })
         },
 
         async index(req, res) {
