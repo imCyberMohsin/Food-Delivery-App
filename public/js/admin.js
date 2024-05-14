@@ -74,6 +74,10 @@ function Admin() {
                         </div>
                     </td>
                     <td class="border px-4 py-2 text-left">${moment(order.createdAt).format('hh:mm A')}</td>
+
+                    <td class="border px-4 py-2 text-left">
+                        ${order.paymentStatus ? 'Paid' : 'Not Paid'}
+                    </td>
                 </tr>
             `;
         });

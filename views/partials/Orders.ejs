@@ -20,6 +20,7 @@
                     <th class="bg-green-500 px-4 py-2 text-left">Phone</th>
                     <th class="bg-green-500 px-4 py-2 text-left">Address</th>
                     <th class="bg-green-500 px-4 py-2 text-left">Time</th>
+                    <th class="bg-green-500 px-4 py-2 text-left">Payment Status</th>
                 </tr>
             </thead>
 
@@ -34,6 +35,7 @@
                             <td class="border px-4 py-2 text-left"><%= order.phone %></td>
                             <td class="border px-4 py-2 text-left"><%= order.address %></td>
                             <td class="border px-4 py-2 text-left"><%= moment(order.createdAt).format('hh:mm A') %></td>
+                            <td class="border px-4 py-2 text-left"><%= order.paymentStatus ? 'Paid' : 'Not Paid' %></td>
                         </tr>
                     <% }); %>
                 <% } else { %>
