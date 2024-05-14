@@ -9,9 +9,9 @@
             <!-- Buttons -->
             <div class="flex justify-end items-center gap-5 flex-col mt-4">
                 <!-- Search Bar -->
-                <form action="/search" method="get" class="flex items-center rounded-full mt-5">
-                    <input type="text" name="search" placeholder="Search for food" class="bg-gray-100 text-lg border border-black rounded-l-full px-4 py-1 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300 transition-all duration-300">
-                    <button type="submit" class="border border-black hover:border-green-600 hover:text-white font-medium text-xl rounded-r-full px-4 ml-1 py-1 hover:bg-green-500 outline-none  transition-all duration-300">Search</button>
+                <form action="/search" method="get" class="flex flex-col sm:flex-row items-center rounded-full mt-5 space-y-2 sm:space-y-0 sm:space-x-2">
+                    <input type="text" name="search" placeholder="Search for food" class="w-full text-center sm:text-left sm:w-auto bg-gray-100 text-lg border border-black rounded-full sm:rounded-l-full sm:rounded-r-none px-4 py-1 outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300 transition-all duration-300">
+                    <button type="submit" class="w-full sm:w-auto border border-black hover:border-green-600 hover:text-white font-medium text-xl rounded-full sm:rounded-r-full sm:rounded-l-none px-4 py-1 hover:bg-green-500 outline-none transition-all duration-300">Search</button>
                 </form>
                 <!-- Order Now Btn -->
                 <a href="#items" class="text-2xl mt-3 font-semibold px-6 py-1 border-2 rounded-full border-black cursor-pointer hover:bg-green-500 transition-all duration-300 hover:text-white hover:border-green-600">Order Now</a>

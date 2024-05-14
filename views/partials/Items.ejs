@@ -5,13 +5,14 @@
     <!-- All Items -->
     <div class="items my-3">
         <!-- Add filter buttons with Tailwind CSS classes -->
-        <div class="filter-buttons flex justify-between sm:justify-center my-8 space-x-3 sm:space-x-10 ">
-            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="all">All</button>
-            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="pizza">Pizza</button>
-            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="burger">Burger</button>
-            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="healthy">Healthy</button>
-            <button class="filter-btn text-lg font-semibold px-5 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="drinks">Drinks</button>
+        <div class="filter-buttons flex md:justify-center overflow-x-auto whitespace-nowrap my-8 space-x-3 sm:space-x-10">
+            <button class="filter-btn text-lg font-semibold px-4 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="all">All</button>
+            <button class="filter-btn text-lg font-semibold px-4 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="pizza">Pizza</button>
+            <button class="filter-btn text-lg font-semibold px-4 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="burger">Burger</button>
+            <button class="filter-btn text-lg font-semibold px-4 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="healthy">Healthy</button>
+            <button class="filter-btn text-lg font-semibold px-4 py-2 bg-gray-200 border border-gray-300 rounded-full hover:bg-green-500 hover:border-green-600 hover:text-white focus:bg-green-500 focus:text-white transition-all duration-300" data-category="drinks">Drinks</button>
         </div>
+        
         <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             <!-- Item card -->
             <% foodItems.forEach(function(item) { %>
