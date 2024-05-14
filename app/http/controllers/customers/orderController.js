@@ -37,6 +37,7 @@ function orderController() {
                         description: `Your Order: ${placedOrder._id}`
                     }).then(() => {
                         placedOrder.paymentStatus = true;
+                        placedOrder.paymentType = paymentType;
                         // Save the updated order with payment status
                         return placedOrder.save();
                     }).then((updatedOrder) => {
