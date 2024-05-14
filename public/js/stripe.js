@@ -75,7 +75,7 @@ export async function initStripe(){
             // 1. Generate token
             stripe.createToken(card).then((result)=>{
                 // 2. Place order
-                console.log(result);
+                // console.log(result);
                 formObject.stripeToken = result.token.id; // adding new field to card payments
                 placeOrder(formObject);
             }).catch((err)=> {
