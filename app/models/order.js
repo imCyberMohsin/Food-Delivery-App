@@ -29,7 +29,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         default: 'COD'
     },
-    payment_status: {
+    paymentStatus: {
         type: Boolean,
         default: false,
     },
